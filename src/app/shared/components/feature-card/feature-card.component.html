@@ -1,0 +1,31 @@
+<mat-card class="feature-card">
+  <div class="feature-top">
+    <div>
+      <h3>{{ project.title }}</h3>
+      <p>{{ project.overview }}</p>
+    </div>
+  </div>
+
+  <div class="feature-meta">
+    <div>
+      <strong>Technologies</strong>
+      <p>{{ project.technologies.join(' • ') }}</p>
+    </div>
+    <div>
+      <strong>Architecture</strong>
+      <p>{{ project.architecture.join(' • ') }}</p>
+    </div>
+  </div>
+
+  <div class="feature-list">
+    <strong>Key features</strong>
+    <ul>
+      <li *ngFor="let feature of project.features">{{ feature }}</li>
+    </ul>
+  </div>
+
+  <div class="feature-actions">
+    <a mat-stroked-button color="primary" [href]="project.github" target="_blank" rel="noreferrer">GitHub</a>
+    <a mat-flat-button color="primary" [href]="project.demo" target="_blank" rel="noreferrer">Live Demo</a>
+  </div>
+</mat-card>

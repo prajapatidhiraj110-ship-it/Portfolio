@@ -1,0 +1,40 @@
+.feature-card {
+  display: grid;
+  gap: 1.5rem;
+  padding: 1.75rem;
+  border-radius: 28px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  min-height: 100%;
+}
+
+.feature-top h3 {
+  margin: 0 0 0.75rem;
+}
+
+.feature-top p,
+.feature-meta p,
+.feature-list p {
+  margin: 0;
+  color: var(--text-medium);
+}
+
+.feature-meta {
+  display: grid;
+  gap: 1rem;
+}
+
+.feature-list ul {
+  margin: 0.75rem 0 0;
+  padding-left: 1.2rem;
+}
+
+.feature-list li {
+  margin-bottom: 0.5rem;
+}
+
+.feature-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}

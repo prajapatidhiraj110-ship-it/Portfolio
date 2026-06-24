@@ -1,0 +1,27 @@
+.section-header {
+  display: grid;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.section-label {
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.section-title {
+  margin: 0;
+  font-size: clamp(2rem, 2.5vw, 3rem);
+  line-height: 1.05;
+}
+
+.section-description {
+  max-width: 52ch;
+  color: var(--text-medium);
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.8;
+}

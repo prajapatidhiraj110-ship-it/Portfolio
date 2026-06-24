@@ -1,0 +1,214 @@
+<section id="hero" class="hero-section">
+  <div class="hero-copy">
+    <span class="eyebrow">Frontend Developer | Angular Developer</span>
+    <h1>{{ hero.name }}</h1>
+    <p>{{ hero.summary }}</p>
+
+    <div class="hero-actions">
+      <a mat-flat-button color="primary" class="hero-button" [href]="hero.resumeUrl" download>
+        Download Resume
+      </a>
+      <a mat-stroked-button color="primary" class="hero-button" [href]="hero.projectsUrl">
+        View Projects
+      </a>
+      <a mat-stroked-button color="primary" class="hero-button" [href]="hero.contactUrl">
+        Contact Me
+      </a>
+    </div>
+
+    <div class="hero-pillstrip">
+      <span *ngFor="let pill of hero.rolePills" class="hero-pill">{{ pill }}</span>
+    </div>
+  </div>
+
+  <div class="hero-panel">
+    <div class="hero-panel-card">
+      <p class="panel-label">Experience</p>
+      <strong>4+ Years</strong>
+      <p>Angular, enterprise fintech, performance optimization, and reusable component systems.</p>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="section-block">
+  <app-section-header
+    label="About"
+    title="Professional introduction"
+    description="A concise summary of my career strengths and the value I bring to engineering teams."
+  ></app-section-header>
+
+  <div class="about-grid">
+    <article>
+      <p>{{ about.overview }}</p>
+      <p>{{ about.summary }}</p>
+    </article>
+
+    <aside class="about-card">
+      <h3>Strengths</h3>
+      <ul>
+        <li *ngFor="let strength of about.strengths">{{ strength }}</li>
+      </ul>
+      <p>{{ about.value }}</p>
+    </aside>
+  </div>
+</section>
+
+<section id="skills" class="section-block">
+  <app-section-header
+    label="Skills"
+    title="Modern frontend and Angular expertise"
+    description="A well-rounded skill set for shipping maintainable and performant Angular applications."
+  ></app-section-header>
+
+  <div class="skills-grid">
+    <article class="skill-panel" *ngFor="let group of skillGroups">
+      <h3>{{ group.title }}</h3>
+      <div class="skill-list">
+        <span class="skill-chip" *ngFor="let item of group.items">{{ item }}</span>
+      </div>
+    </article>
+  </div>
+
+  <div class="expertise-grid">
+    <h3>Angular Expertise</h3>
+    <div class="expertise-list">
+      <div class="expertise-item" *ngFor="let item of expertise">
+        <span>{{ item.name }}</span>
+        <mat-progress-bar [value]="item.level" mode="determinate" color="primary"></mat-progress-bar>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience" class="section-block">
+  <app-section-header
+    label="Experience"
+    title="Professional timeline"
+    description="Enterprise fintech delivery and reusable Angular architecture in a senior engineering role."
+  ></app-section-header>
+
+  <div class="timeline-list">
+    <article class="timeline-card" *ngFor="let entry of experienceEntries">
+      <div class="timeline-top">
+        <p class="timeline-company">{{ entry.company }}</p>
+        <p class="timeline-dates">{{ entry.dates }}</p>
+      </div>
+      <p class="timeline-role">{{ entry.role }} • {{ entry.location }}</p>
+      <ul>
+        <li *ngFor="let item of entry.responsibilities">{{ item }}</li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section id="projects" class="section-block">
+  <app-section-header
+    label="Featured Projects"
+    title="Select professional work"
+    description="Project work that demonstrates Angular upgrade expertise, dynamic forms, and enterprise fintech delivery."
+  ></app-section-header>
+
+  <div class="projects-grid">
+    <app-feature-card *ngFor="let project of projectCards" [project]="project"></app-feature-card>
+  </div>
+</section>
+
+<section id="journey" class="section-block">
+  <app-section-header
+    label="Angular Journey"
+    title="Continuous learning roadmap"
+    description="A progression through Angular versions and modern architecture best practices."
+  ></app-section-header>
+
+  <div class="journey-grid">
+    <app-timeline-card *ngFor="let item of journeyItems" [item]="item"></app-timeline-card>
+  </div>
+</section>
+
+<section id="achievements" class="section-block">
+  <app-section-header
+    label="Achievements"
+    title="Career highlights"
+    description="Cross-cutting accomplishments from hackathons to production deployments."
+  ></app-section-header>
+
+  <div class="achievements-grid">
+    <article class="achievement-card" *ngFor="let achievement of achievements">
+      <strong>{{ achievement.title }}</strong>
+      <p>{{ achievement.detail }}</p>
+    </article>
+  </div>
+</section>
+
+<section id="resume" class="section-block resume-block">
+  <app-section-header
+    label="Resume"
+    title="Professional resume preview"
+    description="Download a polished resume highlighting my Angular and frontend delivery experience."
+  ></app-section-header>
+
+  <mat-card class="resume-card">
+    <div>
+      <p class="resume-label">{{ resume.label }}</p>
+      <p>{{ resume.description }}</p>
+    </div>
+    <a mat-flat-button color="primary" [href]="resume.downloadUrl" download>Download Resume</a>
+  </mat-card>
+</section>
+
+<section id="contact" class="section-block contact-block">
+  <app-section-header
+    label="Contact"
+    title="Let’s build great Angular experiences"
+    description="Send a message or connect through LinkedIn, GitHub, or email."
+  ></app-section-header>
+
+  <div class="contact-grid">
+    <mat-card class="contact-card">
+      <form [formGroup]="contactForm" (ngSubmit)="submitContact()" class="contact-form">
+        <mat-form-field appearance="outline">
+          <mat-label>Name</mat-label>
+          <input matInput formControlName="name" />
+          <mat-error *ngIf="contactForm.get('name')?.hasError('required')">Name is required</mat-error>
+          <mat-error *ngIf="contactForm.get('name')?.hasError('minlength')">Minimum 2 characters</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" type="email" />
+          <mat-error *ngIf="contactForm.get('email')?.hasError('required')">Email is required</mat-error>
+          <mat-error *ngIf="contactForm.get('email')?.hasError('email')">Enter a valid email</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Message</mat-label>
+          <textarea matInput formControlName="message" rows="6"></textarea>
+          <mat-error *ngIf="contactForm.get('message')?.hasError('required')">Message is required</mat-error>
+          <mat-error *ngIf="contactForm.get('message')?.hasError('minlength')">Please share more details</mat-error>
+        </mat-form-field>
+
+        <button mat-flat-button color="primary" type="submit">Send Message</button>
+        <p class="success-text" *ngIf="submitted()">{{ successMessage() }}</p>
+      </form>
+    </mat-card>
+
+    <aside class="contact-links">
+      <p>Connect directly</p>
+      <div class="contact-pill" *ngFor="let link of contactLinks">
+        <a [href]="link.href" target="_blank" rel="noreferrer" aria-label="{{ link.label }}">
+          <mat-icon>{{ link.icon === 'mail' ? 'mail' : link.icon }}</mat-icon>
+          {{ link.name }}
+        </a>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <p>© 2026 Dhiraj Prajapati • Angular Frontend Developer • Gujarat, India</p>
+  <nav class="footer-nav">
+    <a href="#hero">Home</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</footer>
